@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
+int trouve = 0;
 int main() {
     char noms[200][200];     
     float prix[200];         
@@ -51,7 +51,7 @@ int main() {
                 printf("Entrer le nom de l'article a rechercher : ");
                 scanf(" %s", recherche);
                 {
-                    int trouve = 0;
+                    
                     for (i = 0; i < n; i++) {
                         if (strcmp(noms[i], recherche) == 0) {
                             printf("Trouve : %s | Prix: %.2f | Quantite: %d | Auteur: %s\n",
@@ -69,8 +69,7 @@ int main() {
             case 4: {
                 printf("Entrer le nom de l'article a supprimer : ");
                 scanf(" %s", recherche);
-
-                int trouve = 0;
+                trouve=0;
                 for (i = 0; i < n; i++) {
                     if (strcmp(noms[i], recherche) == 0) {
                         for (int j = i; j < n - 1; j++) {
