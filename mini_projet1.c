@@ -73,34 +73,35 @@ int main() {
                 int trouve = 0;
                 for (i = 0; i < n; i++) {
                     if (strcmp(noms[i], recherche) == 0) {
-                        for (int j = i ; j<n-1 ;j++){
-                        strcpy (noms[j], noms[j-1]);
-                        strcpy (auteur[j], auteur[j-1]);
-                        prix[j]=prix[j-1];
-                        quantite[j]=quantite[j-1];
-                        trouve = 1;
-                            break;
+                        for (int j = i; j < n - 1; j++) {
+                            strcpy(noms[j], noms[j+1]);
+                            strcpy(auteur[j], auteur[j+1]);
+                            prix[j] = prix[j+1];
+                            quantite[j] = quantite[j+1];
                         }
-                    }
-                    if (!trouve) {
-                        printf("Article non trouve.\n");
+                        n--;  
+                        printf("Article supprime avec succes.\n");
+                        trouve = 1;
+                        break;
                     }
                 }
+                if (!trouve) {
+                    printf("Article non trouve.\n");
+                }
+                }
                 break;
-                case 5:
-                printf("entrer le noms d'article a modifier: ");
-                scanf("%s",&recherche);
+
+            case 5: {
+                printf("Entrer le nom d'article a modifier: ");
+                scanf("%s", recherche);
                 
-                trouve=0;
-                for(i=0 ; i<n ;i++){
+                int trouve = 0;
+                for(i = 0; i < n; i++) {
                     if (strcmp(noms[i], recherche) == 0) {
-                    //printf("entrer le noms: %s\n", noms[i]);
-                    printf("entrer la quantite a modifier:");
-                    scanf("%d",&quantite[i]);
-                    printf("entrer la nouvelle quantite: ");
-                    scanf("%d",&quantite[i]);
-                     printf(" quantite modifie avec succes.\n");
-                     trouve = 1;
+                        printf("Entrer la nouvelle quantite: ");
+                        scanf("%d", &quantite[i]);
+                        printf("Quantite modifiee avec succes.\n");
+                        trouve = 1;
                         break;
                     }
                 }
@@ -108,21 +109,22 @@ int main() {
                 if (!trouve) {
                     printf("Article non trouve.\n");
                 }
+                }
                 break;
-            }
-                case 6:
-                  int total=0;
-                  for(i=0 ; i<n ;i++){
-                  total += quantite[i];
-                  printf("le total des livres est:%s",total);
+
+            case 6: {
+                int total = 0;
+                for(i = 0; i < n; i++) {
+                    total += quantite[i];
+                }
+                printf("Le total des livres est: %d\n", total);
                 }
                 break;
                 
-                default:
+            default:
                 printf("Choix invalide.\n");
         }
     } while (choix != 7);
 
     return 0;
 }
-                        
